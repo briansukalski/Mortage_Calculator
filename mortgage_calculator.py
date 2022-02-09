@@ -1,5 +1,6 @@
 def future_value_from_annuity(payment_amount, interest_rate, number_periods):
-    pass
+    future_value = payment_amount * (((1+interest_rate)**number_periods - 1)/interest_rate)
+    return round(future_value, 2)
 
 class Home_Ownership:
     def __init__(self, home_value, appreciation_rate):
@@ -31,6 +32,9 @@ class Mortgage:
         payment = round(payment, 2)
         return payment
 
+    def get_future_value(self):
+        return future_value_from_annuity(self.monthly_payment, self.pay_period_interest_rate, self.pay_periods)
 
 my_next_house = Mortgage(1000000, 5)
 print(my_next_house.monthly_payment)
+print(my_next_house.get_future_value())

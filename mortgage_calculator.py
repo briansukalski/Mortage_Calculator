@@ -10,7 +10,10 @@ class Home_Ownership:
 
     def calc_future_value(self, ownership_duration):
         if self.mortgage is not None:
-            mortgage_future_value = future_value_from_annuity(self.mortgage.monthly_payment(), self.mortgage.pay_period_interest_rate, self.mortgage.pay_periods)
+            mortgage_future_value = future_value_from_annuity(self.mortgage.monthly_payment(), .07/12, self.mortgage.pay_periods)
+            return mortgage_future_value
+    def set_mortgage(self, mortgage):
+        self.mortgage = mortgage
 
 class Mortgage:
     def __init__(self, home_value, annual_interest_rate, duration=30, annual_payments=12, down_payment=None):
